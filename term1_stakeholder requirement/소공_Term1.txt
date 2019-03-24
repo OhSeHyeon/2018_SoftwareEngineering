@@ -1,0 +1,140 @@
+2018 소프트웨어공학 term1 : 키오스크를 식당 주문 시스템의 설계
+
+Assginment : 식당 주문 시스템의 개발에 앞서서 요구사항을 결정.
+	Stakeholder(이해관계자) 중
+			고객(식당 주문 시스템 개발을 의뢰한 식당 주인)
+			사용자(식당 주문 시스템을 사용하는 일반인)
+			개발자(식당 주문 시스템을 개발하는 나)
+	의 관점에서 시스템에 대한 요구사항을 찾아본다.
+	즉, 각 관점에서 식당주문 시스템을 생각할 때,
+	시스템이 수행하여야 하는 기능(기능적 요구사항), 품질(비기능적 요구사항 - 품질 요구사항) 등을 정리하여 요구사항을 추출.
+
+* Product Quality
+	functionality : 재대로 동작하는가
+	usability : 사용성, 사용량
+	efficiency : 효과적(생산, 수행)
+	reliability : 신뢰성
+* Process Quality
+	productivity : 생산성
+	effectiveness of methods, tools : 활용성
+	use of standards : 표준 준시
+	management : 관리
+
+0. 키오스크의 시스템 종류 분석 : Information System
+	> Data가 중요
+	> 필요한 Quaility
+		> Data integrity, Data availability, Transaction performance
+		> Security
+		> User interface
+
+1. 고객
+	1-1. 목표 : 무인 파냄기의 도입을 통한 인건비 절약
+	1-2. 품질(External quality ~= Product Quality)
+		> low Cost, productivity >> Productivity(생산속도)/ Timeliness(개발기간에 맞추어 생산)
+		> flexibility >> 고려할 필요가 있을까
+		//
+		> efficiency >> Performance(space, time의 사용량)
+		//
+		> reliability >> Realiability(사용자의 S/W에대한 의존)
+		//
+		> Data integrity
+		> Data availability
+		> Transaction performance
+		> Security
+		
+	1-3. 기능 : 음식점 점장의 관점
+		>1.	초기화면	다음의 2, 5번 기능으로 가는 선택지 제공
+		>2.	보고서	다음의 3, 4번 기능으로 가는 선택지 제공
+		>3.	금일, 금주 매출보고서	금일, 금주 판매 메뉴 순위 및 총 매출 보고서 제공
+		>4.	금월, 금년 매출보고서	금월, 금년 판매 메뉴 순위 및 총 매출 보고서 제공
+		>5.	설정	다음의 6, 7, 8번 기능으로 가는 선택지 제공
+		>6.	식당관리자설정	식당 관리자 아이디 변경 기능 제공.
+			(점주가 바뀐 경우)
+		>7.	메뉴설정	단품/ 세트/ 사이드 메뉴 수정(추가/ 삭제) 기능
+		>8.	화면설정	다음의 9, 10번 기능으로 가는 선택지 제공
+		>9.	시작화면설정	사용자가 사용하는 키오스크의 기본화면(메뉴 광고/ 오늘의 추천/ 이벤트 중 하나) 설정
+		>10.	화면설정	화면 설정(밝기, 해상도) 기능
+		>11.	뒤로 가기	모든 기능 화면에서 상위 화면으로 가는 기능.
+			1번 기능 초기화면에선 비활성화.
+		>12.	HOME	모든 기능 화면에서 1번기능 초기화면으로 이동.
+
+
+
+
+
+2. 사용자
+	2-1. 목표 : 간단, 정확, 빠른 주문 및 음식 준비
+	2-2. 품질(External quality ~= Produc Quality)
+		> ease to use,  easy to learn >> User friendliness(쉽게 사용가능한가)/ User interface(적절한 UI 제공)
+		> functionality >> Functionality(재대로 동작하는가)
+		//
+		> efficiency >> Performance(space, time의 사용량)
+		//
+		> reliability >> Realiability(사용자의 S/W에대한 의존)
+		//
+		> Transaction performance
+	2-3. 기능 : 음식 주문 / 모든 화면은 1분간 아무런 선택이 없을 시 기본화면으로 이동
+		>1.	언어선택	모든 화면 하단에 한국어/ 영어의 언어 선택지를 제공
+		>2.	초기화면	메뉴 광고/ 오늘의 추천/ 이벤트 중 식당 관리자가 설정한 자료가 제공. 화면 어디나 터치 시 다음의 3번 기능으로 이동.
+		>3.	식사장소선택	Take out/ 매장에서 식사장소 선택화면을 제공.
+			화면 어디든 선택 시 다음의 4번 기능으로 이동.
+		>4.	단품/ 세트선택	단품/ 세트 선택화면이 제공. 단품 선택 시 단품 메뉴를 제공하는 5번 기능, 세트메뉴 선택 시 세트 메뉴를 제공하는 6번 기능으로 이동.
+		>5.	단품메뉴	단품 메뉴 화면을 제공. 제품 선택 시 장바구니에 담음.
+			8번 기능 “다음으로1” 선택 시 7번 기능으로 이동
+			10번 기능 “장바구니로1” 선택 시 13번 기능으로 이동.
+		>6.	세트메뉴	세트 메뉴 화면을 제공. 제품 선택 시 장바구니에 담음.
+			9번 기능 “다음으로2” 선택 시 7번 기능으로 이동
+			11번 기능 “장바구니로2” 선택 시 13번 기능으로 이동.
+		>7.	사이드메뉴	사이드 메뉴 화면을 제공. 제품 선택 시 장바구니에 담음.
+			12번 기능 “장바구니로3” 선택 시 13번 기능으로 이동.
+		>8.	다음으로1	5번 기능에서 선택 시 7번 기능으로 이동.
+		>9.	다음으로2	6번 기능에서 선택 시 7번 기능으로 이동.
+		>10.	장바구니로1	5번 기능에서 선택 시 13번 기능으로 이동.
+		>11.	장바구니로2	6번 기능에서 선택 시 13번 기능으로 이동.
+		>12.	장바구니로3	7번 기능에서 선택 시 13번 기능으로 이동.
+		>13.	장바구니	선택한 주문 확인기능 제공
+			주문 조절기능(최소 수량 1에서 +/ -) 제공.
+			14번 기능 “다음으로3” 선택 시 15번 기능으로 이동.
+		>14.	다음으로3	13번 기능에서 선택 시 15번 기능으로 이동.
+		>15.	결제화면	결제 기능.
+			선택한 식사장소에 따른 번호표 출력.
+			번호 표 출력 후 2번기능 초기화면으로 이동.
+		>16.	뒤로 가기	모든 기능 화면에서 상위 화면으로 가는 기능
+			2번 기능 초기화면에선 비활성화.
+		>17.	HOME	모든 기능 화면에서 2번 기능 초기화면으로 이동.
+
+
+
+
+3. 개발자
+	3-1. 목표 : 최소한의
+	3-2. 품질(internal quality ~= Process Quality)
+		> productivity >> Productivity(생산속도)/ Timeliness(개발기간에 맞추어 생산)
+		> documentation >> Visibility(진행상황 시각화)
+		> minimum erros >> Correctness(spec에 따라 동작)/ Robustness(예상치 못한 상황에 적절히 동작, 환경까지 고려)
+		> readable code >> Understanability(이해하기 쉬운가)
+		> good design >> Verifiability(SW의 property가 안전하게 검증되는가)/ Maintainability(SW의 evolution)
+		//
+		> reliability >> Realiability(고객이 SW를 신뢰할 수 있을까)
+		//
+		> effectiveness of methods, tools >> Resuability(기존 코드의 재사용)/ Portability(다른환경에서도 SW가 run/ 필요없음)
+		> use of standards : 표준 준시 >> Interoperability(상호운용성, 다른 시스템과 협업하는 능력 ~ 표준화)
+		//
+		> Data integrity, Data availability, Transaction performance
+		> Security
+		> User interface
+	3-3. 기능
+		> 1.	시스템관리자 로그인 화면	시스템 관리자로서 접근하기 위한 로그인 화면
+		> 2.	시스템관리자 로그인 완료화면	시스템 관리자 로그인 완료 화면.
+							식당관리자설정(기능 3)/서비스관리(기능 4)/ 화면설정(기능5) 선택지 제공.
+							로그아웃 기능 제공.
+		> 3.	식당관리자설정	식당 관리자 등록/ 해제 기능.
+					(등록 : 키오스크 S/W 서비스 시작 시 식당 관리자 등록)
+					(해제 ; 키오스크 S/W 서비스 종료 시 식당 관리자 해제)
+		> 4.	서비스관리	고객, 사용자에게 제공되는 S/W 서비스를 추가/ 삭제하여 관리하는 기능.
+		> 5.	화면설정		화면 설정(밝기, 해상도) 기능.
+		> 6.	뒤로 가기		모든 기능 화면에서 상위 화면으로 가는 기능
+					1번기능 시스템 관리자 로그인 화면에서는 비활성화.
+		> 7.	HOME	모든 기능 화면에서 2번 기능으로 이동.
+
+		
